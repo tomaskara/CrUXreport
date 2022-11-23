@@ -34,7 +34,7 @@ new = False
 if os.stat(os.path.join(project_folder, 'cls')).st_size == 0:
     file.write(f"{date}:{cls}\n")
 else:
-    last_date = file.readlines()[-1].split(":")[0]
+    last_date, last_value = file.readlines()[-1].split(":")
     if last_date != str(date):
         new = True
         file.write(f"{date}:{cls}\n")
@@ -46,7 +46,7 @@ if len(file_list) >= 6:
     for line in file_list[-6:-1]:
         nums.append(float(line.split(":")[1].strip()))
     average = sum(nums) / len(nums)
-    if cls > average and new:
+    if cls > average and new and cls != float(last_value.strip()):
         send_emails(receiver_emails, "CLS /pujcky", cls, average)
 
 file.close()
@@ -57,7 +57,7 @@ new = False
 if os.stat(os.path.join(project_folder, 'lcp')).st_size == 0:
     file.write(f"{date}:{lcp}\n")
 else:
-    last_date = file.readlines()[-1].split(":")[0]
+    last_date, last_value = file.readlines()[-1].split(":")
     if last_date != str(date):
         new = True
         file.write(f"{date}:{lcp}\n")
@@ -69,7 +69,7 @@ if len(file_list) >= 6:
     for line in file_list[-6:-1]:
         nums.append(float(line.split(":")[1].strip()))
     average = sum(nums) / len(nums)
-    if lcp > average and new:
+    if lcp > average and new and lcp != float(last_value.strip()):
         send_emails(receiver_emails, "LCP /pujcky", lcp, average)
 file.close()
 
@@ -79,7 +79,7 @@ new = False
 if os.stat(os.path.join(project_folder, 'fid')).st_size == 0:
     file.write(f"{date}:{fid}\n")
 else:
-    last_date = file.readlines()[-1].split(":")[0]
+    last_date, last_value = file.readlines()[-1].split(":")[0]
     if last_date != str(date):
         new = True
         file.write(f"{date}:{fid}\n")
@@ -91,7 +91,7 @@ if len(file_list) >= 6:
     for line in file_list[-6:-1]:
         nums.append(float(line.split(":")[1].strip()))
     average = sum(nums) / len(nums)
-    if fid > average and new:
+    if fid > average and new and fid != float(last_value.strip()):
         send_emails(receiver_emails, "FID /pujcky", fid, average)
 file.close()
 
@@ -119,7 +119,7 @@ new = False
 if os.stat(os.path.join(project_folder, 'cls_sk')).st_size == 0:
     file.write(f"{date_sk}:{cls_sk}\n")
 else:
-    last_date = file.readlines()[-1].split(":")[0]
+    last_date, last_value = file.readlines()[-1].split(":")[0]
     if last_date != str(date_sk):
         new = True
         file.write(f"{date_sk}:{cls_sk}\n")
@@ -131,7 +131,7 @@ if len(file_list) >= 6:
     for line in file_list[-6:-1]:
         nums.append(float(line.split(":")[1].strip()))
     average = sum(nums) / len(nums)
-    if cls_sk > average and new:
+    if cls_sk > average and new and cls_sk != float(last_value.strip()):
         send_emails(receiver_emails, "CLS /pozicky", cls_sk, average)
 file.close()
 
@@ -141,7 +141,7 @@ new = False
 if os.stat(os.path.join(project_folder, 'lcp_sk')).st_size == 0:
     file.write(f"{date_sk}:{lcp_sk}\n")
 else:
-    last_date = file.readlines()[-1].split(":")[0]
+    last_date, last_value = file.readlines()[-1].split(":")
     if last_date != str(date_sk):
         new = True
         file.write(f"{date_sk}:{lcp_sk}\n")
@@ -152,7 +152,7 @@ if len(file_list) >= 6:
     for line in file_list[-6:-1]:
         nums.append(float(line.split(":")[1].strip()))
     average = sum(nums) / len(nums)
-    if lcp_sk > average and new:
+    if lcp_sk > average and new and lcp_sk != float(last_value.strip()):
         send_emails(receiver_emails, "LCP /pozicky", lcp_sk, average)
 file.close()
 
@@ -162,7 +162,7 @@ new = False
 if os.stat(os.path.join(project_folder, 'fid_sk')).st_size == 0:
     file.write(f"{date_sk}:{fid_sk}\n")
 else:
-    last_date = file.readlines()[-1].split(":")[0]
+    last_date, last_value = file.readlines()[-1].split(":")
     if last_date != str(date_sk):
         new = True
         file.write(f"{date_sk}:{fid_sk}\n")
@@ -173,7 +173,7 @@ if len(file_list) >= 6:
     for line in file_list[-6:-1]:
         nums.append(float(line.split(":")[1].strip()))
     average = sum(nums) / len(nums)
-    if fid_sk > average and new:
+    if fid_sk > average and new and fid_sk != float(last_value.strip()):
         send_emails(receiver_emails, "FID /pozicky", fid_sk, average)
 file.close()
 
